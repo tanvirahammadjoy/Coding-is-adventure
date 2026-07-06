@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, Response } from 'express';
 import User from '../models/User';
 import { auth, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
 // Get current user
-router.get('/me', auth, async (req: AuthRequest, res) => {
+router.get('/me', auth, async (req: AuthRequest, res: Response) => {
   try {
     const user = await User.findById(req.user.userId).select('-password');
     if (!user) {
@@ -19,7 +19,7 @@ router.get('/me', auth, async (req: AuthRequest, res) => {
 });
 
 // Update user
-router.put('/me', auth, async (req: AuthRequest, res) => {
+router.put('/me', auth, async (req: AuthRequest, res: Response) => {
   try {
     const { username, email } = req.body;
     const user = await User.findById(req.user.userId);
