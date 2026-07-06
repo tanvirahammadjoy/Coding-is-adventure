@@ -8,6 +8,7 @@ Package Manager: npm (or pnpm if you prefer)
 
 we would organize it like this.
 
+```bash
 my-app/
 │
 ├── client/ # React Frontend
@@ -106,6 +107,7 @@ my-app/
 ├── .gitignore
 ├── README.md
 └── package.json
+```
 
 Backend Flow
 
