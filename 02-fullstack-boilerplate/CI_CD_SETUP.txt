@@ -1,0 +1,58 @@
+# CI/CD Setup for GitHub Actions
+
+## Prerequisites
+1. Push your project to GitHub
+2. Create a Docker Hub account (hub.docker.com)
+3. Generate a Docker Hub access token
+
+## GitHub Secrets Configuration
+
+Add these secrets to your GitHub repository:
+- Go to: Settings > Secrets and variables > Actions > New repository secret
+
+Add:
+- **DOCKER_USERNAME**: Your Docker Hub username
+- **DOCKER_PASSWORD**: Your Docker Hub access token (not your password)
+
+## Workflow Behavior
+
+The workflow (`.github/workflows/docker.yml`) automatically:
+
+**On Push to Main Branch:**
+- Builds both backend and frontend images
+- Tags images with `latest` and git short SHA
+- Pushes to Docker Hub (only if secrets are configured)
+- Uses GitHub Actions cache for faster builds
+
+**On Pull Requests:**
+- Builds images for testing (does not push)
+- Verifies build succeeds
+
+## Image Tags
+
+Images are tagged with:
+- `username/fullstack-boilerplate-backend:latest` (current release)
+- `username/fullstack-boilerplate-backend:abc1234` (specific commit)
+- Same pattern for frontend
+
+## Next Steps
+
+1. Create GitHub repository and push code:
+   ```
+   git init
+   git add .
+   git commit -m "Initial commit: containerized fullstack app"
+   git branch -M main
+   git remote add origin https://github.com/username/repo.git
+   git push -u origin main
+   ```
+
+2. Add Docker Hub secrets to GitHub repository
+
+3. Monitor workflow runs in: Actions tab
+
+4. Pull and run images in production:
+   ```
+   docker pull username/fullstack-boilerplate-backend:latest
+   docker pull username/fullstack-boilerplate-frontend:latest
+   ```
