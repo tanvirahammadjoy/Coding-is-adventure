@@ -1,3 +1,5 @@
+# docker-compose.yml
+# This file defines the services for the fullstack boilerplate application, including MongoDB, backend, and frontend services.
 services:
     mongodb:
         image: mongo:7

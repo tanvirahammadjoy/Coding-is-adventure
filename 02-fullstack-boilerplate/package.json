@@ -4,7 +4,20 @@
   "description": "A modern, production-ready full-stack web application boilerplate built with React, TypeScript, Node.js, Express, and MongoDB.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src --exec ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
+  },
+  "bugs": {
+    "url": "https://github.com/bradtraversy/fullstack-boilerplate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradtraversy/fullstack-boilerplate.git"
   },
   "keywords": [],
   "author": "",

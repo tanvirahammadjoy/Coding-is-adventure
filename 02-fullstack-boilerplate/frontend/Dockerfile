@@ -1,3 +1,5 @@
+# Dockerfile - Full-stack app: React + TypeScript client, Express + TypeScript + MongoDB server
+
 # Build stage
 FROM node:20-alpine AS builder
 
