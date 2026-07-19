@@ -5,5 +5,6 @@ class hello:
     def hello(self):
         print("hello world")
 
+
 hello_instance = hello()
 hello_instance.hello()

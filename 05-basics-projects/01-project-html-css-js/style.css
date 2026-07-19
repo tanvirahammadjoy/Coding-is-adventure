@@ -1,0 +1,213 @@
+/* ==========================
+   CSS Reset
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   Body
+========================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f4f8;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+/* ==========================
+   Calculator
+========================== */
+
+.calculator {
+    background: white;
+
+    width: 360px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================
+   Display
+========================== */
+
+.display {
+    width: 100%;
+    height: 70px;
+
+    margin-bottom: 20px;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 10px;
+
+    background: #ecf0f3;
+
+    text-align: right;
+
+    font-size: 2rem;
+
+    font-weight: bold;
+}
+
+/* ==========================
+   Buttons Container
+========================== */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+/* ==========================
+    Buttons
+========================== */
+
+.btn {
+    height: 65px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================
+   Hover Effect
+========================== */
+
+.btn:hover {
+    background: #f0f0f0;
+
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   Click Effect
+========================== */
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* ==========================
+   Operator Buttons
+========================== */
+
+.operator {
+    background: #ff9500;
+
+    color: white;
+}
+
+.operator:hover {
+    background: #e68900;
+}
+
+/* ==========================
+   Equal Button
+========================== */
+
+.equal {
+    background: #34c759;
+
+    color: white;
+
+    grid-column: span 2;
+}
+
+.equal:hover {
+    background: #2fa84d;
+}
+
+/* ==========================
+   Clear Button
+========================== */
+
+.clear {
+    background: #ff3b30;
+
+    color: white;
+}
+
+.clear:hover {
+    background: #d92c20;
+}
+
+/* ==========================
+   Delete Button
+========================== */
+
+.delete {
+    background: #5856d6;
+
+    color: white;
+}
+
+.delete:hover {
+    background: #4340b8;
+}
+
+/* ==========================
+   Percentage Button
+========================== */
+
+.percent {
+    background: #5ac8fa;
+
+    color: white;
+}
+
+.percent:hover {
+    background: #40b6eb;
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width: 400px) {
+    .calculator {
+        width: 95%;
+    }
+
+    .btn {
+        height: 60px;
+
+        font-size: 1rem;
+    }
+
+    .display {
+        height: 60px;
+
+        font-size: 1.5rem;
+    }
+}
