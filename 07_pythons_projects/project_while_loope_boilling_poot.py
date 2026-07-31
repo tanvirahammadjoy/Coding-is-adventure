@@ -12,4 +12,5 @@ while temperature < 100:
     temperature += 5
 
 # now lets print the temperature
-print(f"The temperature is {temperature} degrees")
+print(f"This pot is done. The temperature is {temperature} degrees")
+
