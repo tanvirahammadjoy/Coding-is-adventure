@@ -1,6 +1,6 @@
 # JavaScript Mastery Course — Master Roadmap
 
-### From Complete Beginner to Professional/Staff-Level Engineer
+## From Complete Beginner to Professional/Staff-Level Engineer
 
 This is the full curriculum map. Each topic becomes its own markdown file, written in the deep format you specified (objectives, theory, internals, real-world examples, best practices, mistakes, performance, security, exercises, mini-projects, interview questions, challenges). Phases are meant to be worked sequentially — each builds on the last.
 
@@ -125,7 +125,7 @@ This is a genuine multi-month curriculum if done properly with exercises and pro
 
 ## How We'll Work
 
-## Recommended Pace
+## Recommended Pace/
 
 This is a genuine multi-month curriculum if done properly with exercises and projects, not just reading:
 
@@ -134,6 +134,6 @@ This is a genuine multi-month curriculum if done properly with exercises and pro
 - Phase 4: ~6–8 weeks
 - Phase 5: ~4–6 weeks
 
-## How We'll Work
+## How We'll Work/
 
 One module = one file, in the full deep format. I'll build sequentially within a phase, and check in with you at the end of each phase before moving to the next — same rhythm as Phase 1. Starting Phase 2 now with Module 1.

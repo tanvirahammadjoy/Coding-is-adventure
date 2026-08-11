@@ -96,7 +96,7 @@ for (let i = 0; i < 3; i++) {
 
 ### 2.6 Visual: the Scope Chain / Environment Chain
 
-```
+```Bash
 Global Lexical Environment
   └─ outer() Lexical Environment (x: 'outer')
        └─ inner() Lexical Environment (x: 'inner')
@@ -200,6 +200,7 @@ double(5); // 10
 ## 8. Hands-On Exercises
 
 1. Predict the output of this snippet before running it, then verify:
+
    ```javascript
    function outer() {
      let a = 1;
@@ -212,7 +213,9 @@ double(5); // 10
    }
    outer()()();
    ```
+
 2. Fix this buggy loop using three different techniques (`let`, an IIFE, and `.bind`):
+
    ```javascript
    for (var i = 1; i <= 5; i++) {
      setTimeout(function () {
@@ -220,6 +223,7 @@ double(5); // 10
      }, i * 1000);
    }
    ```
+
 3. Write `once(fn)` — a function that wraps `fn` so it can only ever run one time; subsequent calls return the first call's cached result.
 4. Write a `createIdGenerator()` factory that returns a function producing sequential unique IDs (`id1`, `id2`, ...) starting from a configurable prefix.
 
@@ -254,6 +258,7 @@ double(5); // 10
 1. Implement a `curry(fn)` utility that works for any function arity, without using a library, supporting partial application in any grouping (`curry(add)(1)(2)(3)` and `curry(add)(1,2)(3)` both work).
 2. Build a `lazyChain` utility where each closure-returned step only computes when finally "resolved," similar in spirit to how generators defer execution — no generators allowed, closures only.
 3. Diagnose (in writing, no code needed) why the following pattern leaks memory in a long-running Node server, and rewrite it to fix the leak:
+
    ```javascript
    const cache = [];
    function handleRequest(largePayload) {

@@ -1,6 +1,6 @@
 # The JavaScript Master Class
 
-### A complete guide from first line of code to advanced patterns
+## A complete guide from first line of code to advanced patterns
 
 ---
 
