@@ -1,4 +1,5 @@
 # The JavaScript Master Class
+
 ### A complete guide from first line of code to advanced patterns
 
 ---
@@ -33,21 +34,21 @@ Work through the modules in order. Each module has explanations, runnable code e
 JavaScript has three ways to declare a variable: `var`, `let`, and `const`. In modern JavaScript, you should almost never use `var`.
 
 ```javascript
-var oldWay = "avoid this";     // function-scoped, hoisted, error-prone
-let mutable = "can change";    // block-scoped
+var oldWay = "avoid this"; // function-scoped, hoisted, error-prone
+let mutable = "can change"; // block-scoped
 const fixed = "cannot be reassigned"; // block-scoped, preferred default
 ```
 
 Rule of thumb: use `const` by default, switch to `let` only when you know the variable needs to be reassigned. Never use `var`.
 
-`const` prevents *reassignment*, not mutation. This is a common point of confusion:
+`const` prevents _reassignment_, not mutation. This is a common point of confusion:
 
 ```javascript
 const arr = [1, 2, 3];
-arr.push(4);        // fine — mutating the array, not reassigning arr
-console.log(arr);   // [1, 2, 3, 4]
+arr.push(4); // fine — mutating the array, not reassigning arr
+console.log(arr); // [1, 2, 3, 4]
 
-arr = [5, 6];        // TypeError: Assignment to constant variable.
+arr = [5, 6]; // TypeError: Assignment to constant variable.
 ```
 
 ### 1.2 Data Types
@@ -55,16 +56,16 @@ arr = [5, 6];        // TypeError: Assignment to constant variable.
 JavaScript has 7 primitive types and one non-primitive (`object`):
 
 ```javascript
-typeof "hello"      // "string"
-typeof 42           // "number"
-typeof 42n          // "bigint"
-typeof true         // "boolean"
-typeof undefined    // "undefined"
-typeof Symbol()     // "symbol"
-typeof null         // "object"  <-- famous historical bug, null is NOT an object
-typeof {}           // "object"
-typeof []           // "object"  <-- arrays are objects
-typeof function(){} // "function"
+typeof "hello"; // "string"
+typeof 42; // "number"
+typeof 42n; // "bigint"
+typeof true; // "boolean"
+typeof undefined; // "undefined"
+typeof Symbol(); // "symbol"
+typeof null; // "object"  <-- famous historical bug, null is NOT an object
+typeof {}; // "object"
+typeof []; // "object"  <-- arrays are objects
+typeof function () {}; // "function"
 ```
 
 Key distinction: **primitives are immutable and compared by value**; **objects are mutable and compared by reference**.
@@ -72,7 +73,7 @@ Key distinction: **primitives are immutable and compared by value**; **objects a
 ```javascript
 let a = { x: 1 };
 let b = { x: 1 };
-console.log(a === b);   // false — different objects in memory
+console.log(a === b); // false — different objects in memory
 console.log(a.x === b.x); // true — same primitive value
 
 let c = a;
@@ -96,33 +97,33 @@ true + 1    // 2      (true becomes 1)
 **Always use `===` and `!==`** (strict equality), which compare value AND type without coercion. Avoid `==`/`!=` unless you have a specific, well-understood reason.
 
 ```javascript
-0 == "0"     // true  (coercion)
-0 === "0"    // false (no coercion) — prefer this
+0 == "0"; // true  (coercion)
+0 === "0"; // false (no coercion) — prefer this
 
-null == undefined   // true
-null === undefined  // false
+null == undefined; // true
+null === undefined; // false
 ```
 
 ### 1.4 Operators
 
 ```javascript
 // Arithmetic
-5 % 2        // 1 (modulo/remainder)
-2 ** 10      // 1024 (exponentiation)
+5 % 2; // 1 (modulo/remainder)
+2 ** 10; // 1024 (exponentiation)
 
 // Logical
-true && false   // AND
-true || false   // OR
-!true           // NOT
+true && false; // AND
+true || false; // OR
+!true; // NOT
 
 // Nullish coalescing — falls back only for null/undefined, unlike ||
 const count = 0;
-count || 10        // 10  (0 is falsy, so this is probably a bug)
-count ?? 10         // 0   (0 is neither null nor undefined, so it's kept)
+count || 10; // 10  (0 is falsy, so this is probably a bug)
+count ?? 10; // 0   (0 is neither null nor undefined, so it's kept)
 
 // Optional chaining — safely access nested properties
 const user = { profile: null };
-user.profile?.name  // undefined, no error thrown
+user.profile?.name; // undefined, no error thrown
 ```
 
 ### 1.5 Control Flow
@@ -148,10 +149,18 @@ switch (day) {
 }
 
 // Loops
-for (let i = 0; i < 5; i++) { /* ... */ }
-for (const item of [1, 2, 3]) { /* ... */ }        // values
-for (const key in { a: 1, b: 2 }) { /* ... */ }    // keys
-while (condition) { /* ... */ }
+for (let i = 0; i < 5; i++) {
+  /* ... */
+}
+for (const item of [1, 2, 3]) {
+  /* ... */
+} // values
+for (const key in { a: 1, b: 2 }) {
+  /* ... */
+} // keys
+while (condition) {
+  /* ... */
+}
 ```
 
 ### Exercises — Module 1
@@ -193,7 +202,8 @@ function greet(name = "friend") {
   return `Hello, ${name}`;
 }
 
-function sum(...numbers) {           // rest — collects extra args into an array
+function sum(...numbers) {
+  // rest — collects extra args into an array
   return numbers.reduce((total, n) => total + n, 0);
 }
 sum(1, 2, 3, 4); // 10
@@ -209,8 +219,8 @@ function example() {
     var fnScoped = "visible outside the if";
     let blockScoped = "only visible inside the if";
   }
-  console.log(fnScoped);     // works
-  console.log(blockScoped);  // ReferenceError
+  console.log(fnScoped); // works
+  console.log(blockScoped); // ReferenceError
 }
 ```
 
@@ -222,9 +232,9 @@ A closure is a function that "remembers" the variables from the scope in which i
 
 ```javascript
 function makeCounter() {
-  let count = 0;             // private state
+  let count = 0; // private state
   return function () {
-    count++;                 // this inner function "closes over" count
+    count++; // this inner function "closes over" count
     return count;
   };
 }
@@ -262,13 +272,13 @@ Functions that take other functions as arguments or return functions.
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
-numbers.map(n => n * 2);              // [2, 4, 6, 8, 10]
-numbers.filter(n => n % 2 === 0);     // [2, 4]
+numbers.map((n) => n * 2); // [2, 4, 6, 8, 10]
+numbers.filter((n) => n % 2 === 0); // [2, 4]
 numbers.reduce((sum, n) => sum + n, 0); // 15
-numbers.forEach(n => console.log(n));  // side effects, returns undefined
-numbers.find(n => n > 3);              // 4
-numbers.some(n => n > 4);              // true
-numbers.every(n => n > 0);             // true
+numbers.forEach((n) => console.log(n)); // side effects, returns undefined
+numbers.find((n) => n > 3); // 4
+numbers.some((n) => n > 4); // true
+numbers.every((n) => n > 0); // true
 ```
 
 ### Exercises — Module 2
@@ -286,15 +296,16 @@ numbers.every(n => n > 0);             // true
 const person = {
   name: "Ada",
   age: 30,
-  greet() {                    // method shorthand
+  greet() {
+    // method shorthand
     return `Hi, I'm ${this.name}`;
   },
 };
 
-person.name;        // dot notation
-person["name"];     // bracket notation — needed for dynamic keys
+person.name; // dot notation
+person["name"]; // bracket notation — needed for dynamic keys
 const key = "age";
-person[key];         // 30
+person[key]; // 30
 
 // Destructuring
 const { name, age } = person;
@@ -310,10 +321,10 @@ const obj = { [dynamicKey]: 100 }; // { score: 100 }
 ### 3.2 Object Utility Methods
 
 ```javascript
-Object.keys(person);     // ["name", "age", "greet"]
-Object.values(person);   // ["Ada", 30, function]
-Object.entries(person);  // [["name","Ada"], ["age",30], ...]
-Object.freeze(person);   // makes it immutable (shallow)
+Object.keys(person); // ["name", "age", "greet"]
+Object.values(person); // ["Ada", 30, function]
+Object.entries(person); // [["name","Ada"], ["age",30], ...]
+Object.freeze(person); // makes it immutable (shallow)
 Object.assign({}, person, { age: 31 }); // merge (older alternative to spread)
 ```
 
@@ -324,16 +335,22 @@ Arrays are objects with numeric keys and special behavior. Key methods to master
 ```javascript
 const arr = [3, 1, 4, 1, 5];
 
-arr.slice(1, 3);        // [1, 4] — non-mutating, returns a new array
-arr.splice(1, 2);       // mutates arr, removes 2 elements starting at index 1
+arr.slice(1, 3); // [1, 4] — non-mutating, returns a new array
+arr.splice(1, 2); // mutates arr, removes 2 elements starting at index 1
 arr.sort((a, b) => a - b); // mutates, sorts in place — always pass a comparator for numbers
-arr.includes(4);        // true
-arr.indexOf(4);         // position or -1
-[...arr].reverse();     // spread first if you don't want to mutate the original
+arr.includes(4); // true
+arr.indexOf(4); // position or -1
+[...arr].reverse(); // spread first if you don't want to mutate the original
 
 // Flattening
-[[1, 2], [3, [4, 5]]].flat();    // [1, 2, 3, [4, 5]]
-[[1, 2], [3, [4, 5]]].flat(2);   // [1, 2, 3, 4, 5]
+[
+  [1, 2],
+  [3, [4, 5]],
+].flat(); // [1, 2, 3, [4, 5]]
+[
+  [1, 2],
+  [3, [4, 5]],
+].flat(2); // [1, 2, 3, 4, 5]
 
 // Array.from — build arrays from iterables or array-likes
 Array.from({ length: 5 }, (_, i) => i * 2); // [0, 2, 4, 6, 8]
@@ -347,13 +364,15 @@ Array.from({ length: 5 }, (_, i) => i * 2); // [0, 2, 4, 6, 8]
 const [first, second, ...rest] = [1, 2, 3, 4, 5];
 // first = 1, second = 2, rest = [3, 4, 5]
 
-function printCoords({ x, y = 0 }) {   // destructure directly in parameters
+function printCoords({ x, y = 0 }) {
+  // destructure directly in parameters
   console.log(`(${x}, ${y})`);
 }
 printCoords({ x: 5 }); // (5, 0)
 
 // Swapping variables without a temp variable
-let a = 1, b = 2;
+let a = 1,
+  b = 2;
 [a, b] = [b, a];
 ```
 
@@ -373,27 +392,31 @@ let a = 1, b = 2;
 ```javascript
 const obj = {
   name: "Ada",
-  regularFn: function () { return this.name; },
-  arrowFn: () => { return this.name; },
+  regularFn: function () {
+    return this.name;
+  },
+  arrowFn: () => {
+    return this.name;
+  },
 };
 
-obj.regularFn();  // "Ada" — called as obj.method(), this = obj
-obj.arrowFn();    // undefined — arrow functions inherit `this` from
-                  // the enclosing scope at definition time, not the caller
+obj.regularFn(); // "Ada" — called as obj.method(), this = obj
+obj.arrowFn(); // undefined — arrow functions inherit `this` from
+// the enclosing scope at definition time, not the caller
 
 const detached = obj.regularFn;
-detached();       // undefined (or throws in strict mode) — this is lost
-                  // because it's no longer called as obj.method()
+detached(); // undefined (or throws in strict mode) — this is lost
+// because it's no longer called as obj.method()
 ```
 
 **Fixing lost `this`:**
 
 ```javascript
-const bound = obj.regularFn.bind(obj);  // permanently binds this
+const bound = obj.regularFn.bind(obj); // permanently binds this
 bound(); // "Ada"
 
-obj.regularFn.call(obj);   // invoke immediately with a specified this
-obj.regularFn.apply(obj);  // same, but takes arguments as an array
+obj.regularFn.call(obj); // invoke immediately with a specified this
+obj.regularFn.apply(obj); // same, but takes arguments as an array
 ```
 
 Rule of thumb: use regular functions for object methods (so `this` refers to the object), and arrow functions for callbacks where you want `this` to stay tied to the surrounding context (very common in class methods and event handlers).
@@ -404,15 +427,17 @@ Every JS object has a hidden link to another object — its prototype — which 
 
 ```javascript
 const animal = {
-  speak() { return `${this.name} makes a sound`; },
+  speak() {
+    return `${this.name} makes a sound`;
+  },
 };
 
-const dog = Object.create(animal);  // dog's prototype is animal
+const dog = Object.create(animal); // dog's prototype is animal
 dog.name = "Rex";
 dog.speak(); // "Rex makes a sound" — inherited from animal
 
-dog.hasOwnProperty("name");    // true
-dog.hasOwnProperty("speak");   // false — it's on the prototype
+dog.hasOwnProperty("name"); // true
+dog.hasOwnProperty("speak"); // false — it's on the prototype
 ```
 
 ### 4.3 Classes
@@ -421,32 +446,35 @@ dog.hasOwnProperty("speak");   // false — it's on the prototype
 
 ```javascript
 class Animal {
-  #secret = "hidden";        // private field (# syntax)
-  static count = 0;          // static property, shared across all instances
+  #secret = "hidden"; // private field (# syntax)
+  static count = 0; // static property, shared across all instances
 
   constructor(name) {
     this.name = name;
     Animal.count++;
   }
 
-  speak() {                  // instance method — lives on Animal.prototype
+  speak() {
+    // instance method — lives on Animal.prototype
     return `${this.name} makes a sound`;
   }
 
-  static describe() {        // static method — called on the class itself
+  static describe() {
+    // static method — called on the class itself
     return `${Animal.count} animals created`;
   }
 }
 
 class Dog extends Animal {
-  speak() {                  // method overriding
+  speak() {
+    // method overriding
     return `${super.speak()}, specifically a bark`;
   }
 }
 
 const rex = new Dog("Rex");
-rex.speak();          // "Rex makes a sound, specifically a bark"
-Animal.describe();    // "1 animals created"
+rex.speak(); // "Rex makes a sound, specifically a bark"
+Animal.describe(); // "1 animals created"
 ```
 
 ### Exercises — Module 4
@@ -472,7 +500,7 @@ JavaScript is single-threaded — it can only do one thing at a time. Asynchrono
 ```javascript
 console.log("1");
 
-setTimeout(() => console.log("2"), 0);   // macrotask
+setTimeout(() => console.log("2"), 0); // macrotask
 
 Promise.resolve().then(() => console.log("3")); // microtask
 
@@ -516,20 +544,20 @@ function fetchData() {
 }
 
 fetchData()
-  .then(data => console.log(data))
-  .catch(err => console.error(err))
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err))
   .finally(() => console.log("done"));
 
 // Chaining — each .then() can return a value or another promise
 fetchData()
-  .then(data => data.id)
-  .then(id => fetchDataById(id))
-  .then(result => console.log(result));
+  .then((data) => data.id)
+  .then((id) => fetchDataById(id))
+  .then((result) => console.log(result));
 
 // Running things in parallel
-Promise.all([fetchData(), fetchData()]);        // fails fast if any reject
+Promise.all([fetchData(), fetchData()]); // fails fast if any reject
 Promise.allSettled([fetchData(), fetchData()]); // waits for all, never rejects
-Promise.race([fetchData(), fetchData()]);       // settles as soon as one does
+Promise.race([fetchData(), fetchData()]); // settles as soon as one does
 ```
 
 ### 5.4 async/await
@@ -539,7 +567,7 @@ Syntactic sugar over Promises that lets async code read like synchronous code.
 ```javascript
 async function getData() {
   try {
-    const data = await fetchData();   // pauses here until the promise settles
+    const data = await fetchData(); // pauses here until the promise settles
     const more = await fetchDataById(data.id);
     return more;
   } catch (err) {
@@ -548,7 +576,7 @@ async function getData() {
 }
 
 // A function marked `async` always returns a Promise
-getData().then(result => console.log(result));
+getData().then((result) => console.log(result));
 
 // Parallel requests with async/await
 async function getBoth() {
@@ -588,7 +616,9 @@ const custom = {
     return {
       next() {
         i++;
-        return i <= 3 ? { value: i, done: false } : { value: undefined, done: true };
+        return i <= 3
+          ? { value: i, done: false }
+          : { value: undefined, done: true };
       },
     };
   },
@@ -633,8 +663,12 @@ Modern JavaScript uses ES Modules (`import`/`export`) to split code across files
 ```javascript
 // math.js
 export const PI = 3.14159;
-export function square(x) { return x * x; }
-export default function add(a, b) { return a + b; }
+export function square(x) {
+  return x * x;
+}
+export default function add(a, b) {
+  return a + b;
+}
 
 // main.js
 import add, { PI, square } from "./math.js";
@@ -709,11 +743,11 @@ Object.hasOwn(obj, "key");
 
 // Array grouping-style patterns via reduce (widely used pre-Object.groupBy)
 // Top-level await (ES2022, in modules)
-const data = await fetch("/api").then(r => r.json());
+const data = await fetch("/api").then((r) => r.json());
 
 // Logical assignment operators (ES2021)
 let count = null;
-count ??= 0;   // assign only if null/undefined
+count ??= 0; // assign only if null/undefined
 let flag = true;
 flag &&= false; // assign only if currently truthy
 
@@ -736,21 +770,30 @@ JavaScript supports functional-style code even though it's not a purely function
 // Pure functions — same input always produces same output, no side effects
 const add = (a, b) => a + b; // pure
 let total = 0;
-const addImpure = (n) => { total += n; return total; }; // impure — depends on/mutates external state
+const addImpure = (n) => {
+  total += n;
+  return total;
+}; // impure — depends on/mutates external state
 
 // Immutability — prefer creating new data over mutating existing data
 const addItem = (arr, item) => [...arr, item]; // instead of arr.push(item)
 
 // Composition
-const compose = (...fns) => (x) => fns.reduceRight((acc, fn) => fn(acc), x);
-const pipe = (...fns) => (x) => fns.reduce((acc, fn) => fn(acc), x);
+const compose =
+  (...fns) =>
+  (x) =>
+    fns.reduceRight((acc, fn) => fn(acc), x);
+const pipe =
+  (...fns) =>
+  (x) =>
+    fns.reduce((acc, fn) => fn(acc), x);
 
-const double = x => x * 2;
-const increment = x => x + 1;
+const double = (x) => x * 2;
+const increment = (x) => x + 1;
 pipe(double, increment)(5); // (5*2)+1 = 11
 
 // Currying
-const curriedAdd = a => b => c => a + b + c;
+const curriedAdd = (a) => (b) => (c) => a + b + c;
 curriedAdd(1)(2)(3); // 6
 
 // Memoization — cache results of expensive pure function calls
@@ -796,7 +839,7 @@ class EventEmitter {
     (this.#listeners[event] ??= []).push(callback);
   }
   emit(event, ...args) {
-    (this.#listeners[event] || []).forEach(cb => cb(...args));
+    (this.#listeners[event] || []).forEach((cb) => cb(...args));
   }
 }
 
@@ -822,7 +865,8 @@ function createUser(type) {
 
 ```javascript
 const seen = new Set();
-seen.add(1); seen.has(1); // true, O(1) lookup
+seen.add(1);
+seen.has(1); // true, O(1) lookup
 
 const cache = new Map();
 cache.set({ id: 1 }, "value"); // object keys work directly, unlike {}
@@ -838,6 +882,9 @@ A minimal example using a common testing pattern (works with Jest, Vitest, or si
 
 ```javascript
 // sum.js
+export function sum(a, b) {
+  return a + b;
+
 export function sum(a, b) { return a + b; }
 
 // sum.test.js

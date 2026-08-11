@@ -41,9 +41,9 @@ for i, item in enumerate(items):
 # BAD: building a list with a loop just to sum/filter/transform
 squares_bad = []
 for n in range(10):
-    squares_bad.append(n ** 2)
+    squares_bad.append(n**2)
 # GOOD: comprehension
-squares_good = [n ** 2 for n in range(10)]
+squares_good = [n**2 for n in range(10)]
 
 # BAD: checking None with ==
 x = None
@@ -73,7 +73,7 @@ print(f"\nequivalent outputs: {old_style!r}, {format_style!r}, {f_string_style!r
 # BAD: catching everything with a bare except
 try:
     pass
-except Exception:      # OK when you truly need broad handling + re-raise/log
+except Exception:  # OK when you truly need broad handling + re-raise/log
     pass
 # WORSE (avoid entirely): except: pass  — swallows even KeyboardInterrupt/SystemExit
 
