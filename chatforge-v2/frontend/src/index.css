@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Roomtone palette - deep plum-charcoal base, coral-flame primary accent,
+     seafoam secondary accent for read/success states. Deliberately not the
+     cream+terracotta or near-black+acid-green defaults. */
+  --color-bg: #1b1523;
+  --color-surface: #251d2e;
+  --color-surface-elevated: #2f2438;
+  --color-border-subtle: #3a2f44;
+
+  --color-accent: #ff6b4a;
+  --color-accent-hover: #ff8266;
+  --color-accent-secondary: #7fd1ae;
+
+  --color-text-primary: #f5f1f0;
+  --color-text-secondary: #b8aec2;
+  --color-text-muted: #7d7189;
+
+  --color-danger: #ef4a63;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-ui: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+}
+
+/* Themed scrollbar instead of the browser default, matching Roomtone's palette */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-subtle) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-subtle);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-muted);
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-message-in {
+  animation: message-in 0.2s ease-out;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-modal-in {
+  animation: modal-in 0.15s ease-out;
+}
