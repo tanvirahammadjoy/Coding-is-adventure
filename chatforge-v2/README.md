@@ -18,7 +18,7 @@ rich messaging (reactions, replies, edits, read receipts), and file attachments.
 
 ## Project structure
 
-```
+```bash
 chatforge-v2/
 ├── backend/
 │   └── src/
@@ -60,6 +60,7 @@ cp .env.example .env
 ```
 
 Edit `backend/.env`:
+
 - `MONGODB_URI` — your connection string
 - `JWT_ACCESS_SECRET` / `JWT_REFRESH_SECRET` — any long random strings (e.g. `openssl rand -hex 32`)
 - `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` — from your Cloudinary dashboard
