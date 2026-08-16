@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────────────────────────────────────────────────────
+   Theme tokens.
+
+   Two full palettes, switched by a `data-theme` attribute on <html>
+   (see ThemeContext.tsx). Every component reads colors through Tailwind
+   classes like `bg-card` / `text-foreground`, which resolve to these CSS
+   variables — so no component needs to know which theme is active.
+
+   - [data-theme="relay"]  (default) — dark, technical, telemetry-console feel.
+   - [data-theme="aurora"] — light, editorial: serif display type over a
+     violet/coral palette.
+   ─────────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root,
+  [data-theme="relay"] {
+    --background: 216 17% 8%;        /* #12151A ink charcoal, blue undertone */
+    --foreground: 216 12% 91%;       /* #E7E9EC */
+    --card: 220 15% 12%;             /* #1A1E25 panel */
+    --card-foreground: 216 12% 91%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 216 12% 91%;
+    --primary: 172 55% 60%;          /* #4FD1C5 signal teal */
+    --primary-foreground: 216 20% 8%;
+    --secondary: 222 13% 16%;        /* #20242C raised panel */
+    --secondary-foreground: 216 12% 91%;
+    --muted: 222 13% 16%;
+    --muted-foreground: 218 12% 60%; /* #8891A0 */
+    --accent: 249 68% 71%;           /* #8C7CF0 violet, single distinguishing highlight */
+    --accent-foreground: 216 20% 8%;
+    --destructive: 6 84% 62%;        /* #F0614A coral error */
+    --destructive-foreground: 216 12% 95%;
+    --warn: 36 85% 58%;              /* #F2A93B amber */
+    --border: 222 12% 20%;           /* #2B3038 */
+    --input: 222 12% 20%;
+    --ring: 172 55% 60%;
+    --radius: 0.375rem;
+
+    /* Typography stacks — system fonts, no network request, matches the
+       "technical console" feel. */
+    --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  [data-theme="aurora"] {
+    --background: 250 45% 97%;       /* soft lavender-white paper */
+    --foreground: 260 30% 13%;       /* deep indigo-black text */
+    --card: 0 0% 100%;               /* pure white cards, pop against the lavender bg */
+    --card-foreground: 260 30% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 30% 13%;
+    --primary: 262 52% 47%;          /* deep violet */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 252 32% 94%;        /* soft lavender panel */
+    --secondary-foreground: 260 30% 13%;
+    --muted: 252 32% 94%;
+    --muted-foreground: 258 12% 42%;
+    --accent: 14 85% 60%;            /* warm coral — complementary pop against violet */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 6 78% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --warn: 38 92% 50%;
+    --border: 255 22% 88%;
+    --input: 255 22% 88%;
+    --ring: 262 52% 47%;
+    --radius: 0.625rem;
+
+    /* Editorial pairing: serif display type for headings, a humanist sans
+       for body copy. Loaded via index.html <link> tags. */
+    --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Smooth the visual jump when swapping themes (background/text color,
+       border color) rather than a hard flash. */
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Signature grid backdrop behind the PulseStrip chart — subtle graph-
+     paper texture using the theme's own border color, so it stays
+     coherent across both palettes. */
+  .signal-grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}

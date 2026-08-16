@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Relay — Infrastructure Console</title>
+        <!-- Only used by the Aurora theme's --font-display/--font-body variables;
+         harmless (just unused) while the Relay theme is active. -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <!-- No hardcoded theme class here — ThemeContext sets `data-theme` on
+       <html> itself as soon as React mounts, based on the saved preference. -->
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
+</html>
