@@ -1,0 +1,18 @@
+{
+    "root": [
+        "./src/App.tsx",
+        "./src/main.tsx",
+        "./src/vite-env.d.ts",
+        "./src/components/Feed.tsx",
+        "./src/components/FilterBar.tsx",
+        "./src/components/Header.tsx",
+        "./src/components/LaunchCard.tsx",
+        "./src/components/LoginScreen.tsx",
+        "./src/hooks/useLaunchFeed.ts",
+        "./src/hooks/useLaunchSocket.ts",
+        "./src/lib/api.ts",
+        "./src/lib/auth.ts",
+        "./src/types/launch.ts"
+    ],
+    "version": "5.9.3"
+}
